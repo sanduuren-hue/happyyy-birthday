@@ -1,0 +1,561 @@
+
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Lily 🥀</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; }
+
+:root {
+  --red: #a31535;
+  --pink: #ff9caf;
+  --cream: #f4e4d2;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #080408;
+  color: #fbeaf0;
+  font-family: 'Cormorant Garamond', serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse at center, #39101d 0%, #12070e 55%, #030203 100%);
+}
+
+.background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent, #050205);
+  opacity: .5;
+}
+
+.hidden { display: none !important; }
+
+.page {
+  min-height: 100vh;
+  padding: 35px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: pageIn .7s ease both;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+  width: min(100%, 540px);
+  padding: 35px 25px;
+  border: 1px solid #a3445c;
+  border-radius: 18px;
+  background: #10070ddf;
+  box-shadow: 0 0 45px #a6193b24;
+  backdrop-filter: blur(10px);
+}
+
+.flower {
+  font-size: 48px;
+  margin-bottom: 15px;
+  animation: flowerFloat 3s ease-in-out infinite;
+}
+
+@keyframes flowerFloat {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-8px) rotate(5deg); }
+}
+
+.small-title {
+  color: #e98da3;
+  letter-spacing: 4px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: clamp(48px, 11vw, 76px);
+  color: var(--pink);
+  margin: 15px 0;
+}
+
+h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 42px;
+  font-weight: 400;
+  color: #a72e4c;
+}
+
+p {
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+input {
+  width: 100%;
+  max-width: 240px;
+  padding: 14px;
+  border: 1px solid #a3445c;
+  border-radius: 8px;
+  background: #1c0b14;
+  color: white;
+  text-align: center;
+  font-size: 22px;
+  letter-spacing: 8px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #ff91aa;
+  box-shadow: 0 0 15px #ff527522;
+}
+
+button { font-family: inherit; }
+
+.back {
+  padding: 12px 25px;
+  margin-top: 20px;
+  border: 1px solid #b34460;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #581329, #210812);
+  color: #ffe9ef;
+  font-size: 17px;
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.back:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 22px #f33b6344;
+  background: #691a33;
+}
+
+#error {
+  color: #ff8da5;
+  min-height: 24px;
+}
+
+.hint { margin-top: 20px; color: #eaa2b3; }
+
+.gifts {
+  width: min(100%, 850px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 35px 0;
+}
+
+.gift {
+  min-height: 190px;
+  padding: 25px 10px;
+  border: 1px solid #96344e;
+  border-radius: 14px;
+  background: linear-gradient(150deg, #240b16, #090509);
+  color: #ffc0ce;
+  cursor: pointer;
+  transition: transform .35s, box-shadow .35s;
+}
+
+.gift:hover {
+  transform: translateY(-8px) scale(1.025);
+  border-color: #ff829a;
+  box-shadow: 0 12px 35px #f33b6330;
+}
+
+.gift span {
+  display: block;
+  font-size: 38px;
+  margin-bottom: 17px;
+}
+
+.gift b {
+  display: block;
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.gift small {
+  display: block;
+  margin-top: 8px;
+  color: #c5a7b1;
+  font-size: 15px;
+}
+
+.photo {
+  width: min(100%, 440px);
+  max-height: 65vh;
+  object-fit: contain;
+  padding: 8px;
+  border: 1px solid #b44d65;
+  background: #170910;
+  box-shadow: 0 0 30px #d12c5028;
+  animation: photoIn .8s ease both;
+}
+
+@keyframes photoIn {
+  from { opacity: 0; transform: scale(.92) rotate(-2deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+.letter {
+  width: min(100%, 650px);
+  padding: 30px 25px;
+  text-align: left;
+  color: #42232c;
+  background: linear-gradient(135deg, #f4e4d2, #dec2ab);
+  box-shadow: 0 12px 35px #0008;
+  position: relative;
+}
+
+.letter::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid #a77b7d88;
+  pointer-events: none;
+}
+
+.letter h2 { text-align: center; margin-top: 5px; }
+.letter p { font-size: 18px; line-height: 1.65; }
+
+.signature {
+  font-family: 'Great Vibes', cursive;
+  font-size: 34px;
+  text-align: right;
+  color: #87334a;
+}
+
+#heart {
+  font-size: 100px;
+  color: #ff7194;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  margin: 20px;
+  filter: drop-shadow(0 0 16px #ff214c);
+  animation: heartbeat 1.5s infinite;
+  transition: transform .3s;
+}
+
+#heart:hover { transform: scale(1.15); }
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+#surprise {
+  width: min(100%, 760px);
+  animation: pageIn .8s ease both;
+}
+
+.poem-paper {
+  width: 100%;
+  padding: clamp(20px, 4vw, 36px);
+  color: #42232c;
+  text-align: center;
+  background: linear-gradient(135deg, #f8eadc, #e8d1bf);
+  border: 1px solid #d3a5a8;
+  box-shadow: 0 12px 35px #0008;
+}
+
+.poem-paper h2 {
+  margin: 4px 0 22px;
+  color: #87334a;
+}
+
+.poem {
+  white-space: pre-line;
+  font-size: clamp(16px, 2.2vw, 19px);
+  line-height: 1.8;
+}
+
+.petal {
+  position: fixed;
+  top: -30px;
+  z-index: 10;
+  color: #f24b6c;
+  pointer-events: none;
+  animation: falling linear forwards;
+}
+
+@keyframes falling {
+  to {
+    transform: translate(var(--drift), 110vh) rotate(600deg);
+    opacity: 0;
+  }
+}
+
+footer { color: #bda0aa; font-style: italic; }
+
+@media (max-width: 650px) {
+  .gifts {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+  }
+  .gift { min-height: 140px; }
+  .card, .letter { padding: 25px 18px; }
+  .letter p { font-size: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="background"></div>
+
+<!-- LOCK SCREEN -->
+<section id="lockScreen" class="page">
+  <div class="card">
+    <div class="flower">🥀</div>
+    <div class="small-title">Private Access</div>
+    <h1>For Lily</h1>
+    <p>Энэ бэлэг нууц кодтой. 🖤</p>
+
+    <form id="lockForm" style="margin-top:25px">
+      <input id="passcode" type="password" inputmode="numeric"
+        maxlength="6" placeholder="••••••" autocomplete="off"
+        aria-label="Нууц код">
+      <br>
+      <button class="back" type="submit">Unlock ♡</button>
+    </form>
+
+    <p id="error"></p>
+
+    <details class="hint">
+      <summary style="cursor:pointer">Hint 💡</summary>
+      <p style="font-size:16px">1****2 lockscreen code </p>
+    </details>
+  </div>
+</section>
+
+<!-- WEBSITE -->
+<div id="website" class="hidden">
+
+  <!-- HOME -->
+  <section class="page" id="home">
+    <div class="small-title">A special day for someone special</div>
+    <h1>Happy Birthday, Lily</h1>
+    <p>Гурван бэлэг чамайг хүлээж байна. 🥀<br>Аль нэгийг нь сонгоод нээгээрэй.</p>
+
+    <div class="gifts">
+      <button class="gift" onclick="openGift(1)">
+        <span>🎁</span>
+        <b>Gift One</b>
+        <small>A beautiful memory</small>
+      </button>
+
+      <button class="gift" onclick="openGift(2)">
+        <span>💌</span>
+        <b>Gift Two</b>
+        <small>A letter for you</small>
+      </button>
+
+      <button class="gift" onclick="openGift(3)">
+        <span>🖤</span>
+        <b>Gift Three</b>
+        <small>One more surprise</small>
+      </button>
+    </div>
+
+    <footer>“Some people make the world more beautiful just by being in it.”</footer>
+  </section>
+
+  <!-- GIFT ONE: IMAGE -->
+  <section class="page hidden" id="gift1">
+    <div class="small-title">Gift One</div>
+    <h1>A Beautiful Memory</h1>
+
+    <img class="photo" src="download.jpg"
+      alt="Lily-ийн зураг"
+      onerror="this.hidden=true; document.getElementById('photoError').classList.remove('hidden')">
+
+    <p id="photoError" class="hidden">
+      Зураг харагдахгүй байна. download.jpg файлаа index.html-тэй нэг хавтсанд байрлуулаарай.
+    </p>
+
+    <p>Хамгийн нандин дурсамжуудын нэг. 🤍<br>Үргэлж аз жаргалтай байгаарай.</p>
+    <button class="back" onclick="goHome()">← Буцах</button>
+  </section>
+
+  <!-- GIFT TWO: LETTER -->
+  <section class="page hidden" id="gift2">
+    <div class="small-title">Gift Two · A letter from the heart</div>
+
+    <article class="letter">
+      <h2>Dear Lily,</h2>
+
+      <p>Төрсөн өдрийн мэнд хүргэе. ❤️</p>
+
+      <p>
+        Өнөөдөр бол чиний өдөр. Тиймээс өнөөдөр төдийгүй маргааш,
+        нөгөөдөр, цаашдын бүх өдөртөө аз жаргалтай байгаарай.
+        Чамд хэлж амжаагүй үгс, илэрхийлж чадаагүй сэтгэл надад
+        зөндөө бий. Магадгүй би бүгдийг нь үгээр хэлж чадахгүй ч,
+        чамд хүссэн бүхнээ хэлж амжаагүй үлдсэн ч гэсэн өнөөдөр
+        чамд хамгийн сайхан бүхнийг хүсэж байгааг минь ойлгоорой.
+      </p>
+
+      <p>
+        Цаашдаа бидний зам хэрхэн үргэлжлэхийг, амьдрал бидэнд
+        юу бэлдсэнийг би мэдэхгүй. Гэхдээ чиний инээмсэглэл
+        хэзээ ч битгий бүдгэрээсэй.
+      </p>
+
+      <p>
+        Эцэст нь хэлэхэд, чамд дахин төрсөн өдрийн мэнд хүргэе.
+        🎂 16 нас чинь өмнөх жилүүдээсээ ч илүү аз жаргалтай,
+        дурсамжтай, хайр мэдрүүлсэн жил байгаасай. Хүсэл мөрөөдөл
+        бүхэн чинь биелж, хүссэн газраа хүрч, өөрийнхөө хүссэн
+        амьдралыг бүтээх хүч чадалтай байгаарай.
+      </p>
+
+      <div class="signature"> ♡</div>
+    </article>
+
+    <button class="back" onclick="goHome()">← Буцах</button>
+  </section>
+
+  <!-- GIFT THREE: POEM -->
+  <section class="page hidden" id="gift3">
+    <div class="small-title">Gift Three</div>
+    <h1>One More Thing...</h1>
+    <p>Зүрхэн дээр дараарай. 🖤</p>
+
+    <button id="heart" onclick="reveal()" aria-label="Шүлгийг нээх">♥</button>
+
+    <div id="surprise" class="hidden">
+      <article class="poem-paper">
+        <h2>For You, Lily 🥀</h2>
+
+        <div class="poem">Би чамд бороо орохгүй амьдралыг амлаж чадахгүй,
+Өвдөлт хэзээ ч хүрэхгүй зүрхийг амлаж чадахгүй.
+Зам бүр гэртэй байна гэж амлаж чадахгүй,
+Амьдралын бүлэг бүр гэрлээр дүүрэн байна гэж амлаж чадахгүй.
+
+Гэхдээ өвөл ирж, хүйтэн салхи үлээх үед
+Ядарсан хуруунууд чинь миний гарыг түшиг болгохыг мэдрээсэй гэж би хүсдэг.
+Харанхуй нөмөрч, тэнгэрээс одод алга болох үед
+Миний дуу хоолой “Би энд байна” гэж чамд шивнэдэг байгаасай.
+
+Дэлхий хүнд санагдаж, зүрх чинь сульдах үед
+Миний мөр чиний хайж байсан тайвшрал байгаасай.
+Шуурга биднийг хүрээлж, тэнгэр сааралтах үед
+Миний хайр чамд зам заах гэрэл байгаасай.
+
+Би чамд төгс амьдрал, алдаа мадаггүй маргаашийг амлаж чадахгүй.
+Гэхдээ баяр баясгалан, зовлон, гунигийн алинд ч
+Би чиний хажууд зогсоно гэдгээ амлаж чадна.
+
+Улирал бүрийг, сорви бүрийг туулсан ч би чамайг олно.
+Чи надад хэр ойрхон эсвэл хэр хол байхаас үл хамаарна.
+Учир нь хайр гэдэг
+Тэнгэр цэлмэг, нар гийсэн үед л чамайг сонгох биш.
+
+Шуурга ирэх үед ч гараас чинь атгахыг хэлнэ.
+Зүрх минь хэрхэн цохилохоо санаж байгаа цагт
+Би чамайг дахин дахин сонгох болно.
+Бидний сүнс дахин учрах амьдрал бүрд
+Би чамайг дахин сонгох болно. </div>
+
+        <div class="signature"> ♡</div>
+      </article>
+    </div>
+
+    <button class="back" onclick="goHome()">← Буцах</button>
+  </section>
+
+</div>
+
+<script>
+const SECRET_CODE = "102392";
+
+document.getElementById("lockForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const input = document.getElementById("passcode");
+  const error = document.getElementById("error");
+
+  if (input.value === SECRET_CODE) {
+    document.getElementById("lockScreen").classList.add("hidden");
+    document.getElementById("website").classList.remove("hidden");
+    error.textContent = "";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else {
+    error.textContent = "Буруу код байна 🥀 Дахиад оролдоорой.";
+    input.value = "";
+    input.focus();
+  }
+});
+
+function openGift(n) {
+  document.querySelectorAll("#website .page").forEach(page => {
+    page.classList.add("hidden");
+  });
+
+  document.getElementById("gift" + n).classList.remove("hidden");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function goHome() {
+  document.querySelectorAll("#website .page").forEach(page => {
+    page.classList.add("hidden");
+  });
+
+  document.getElementById("home").classList.remove("hidden");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function reveal() {
+  document.getElementById("heart").classList.add("hidden");
+  document.getElementById("surprise").classList.remove("hidden");
+
+  for (let i = 0; i < 24; i++) {
+    setTimeout(createPetal, i * 90);
+  }
+}
+
+function createPetal() {
+  const petal = document.createElement("span");
+  petal.className = "petal";
+  petal.textContent = Math.random() > .5 ? "✦" : "♥";
+  petal.style.left = Math.random() * 100 + "vw";
+  petal.style.fontSize = (10 + Math.random() * 15) + "px";
+  petal.style.setProperty("--drift", (Math.random() * 180 - 90) + "px");
+  petal.style.animationDuration = (5 + Math.random() * 6) + "s";
+
+  document.body.appendChild(petal);
+  setTimeout(() => petal.remove(), 12000);
+}
+
+for (let i = 0; i < 18; i++) {
+  setTimeout(createPetal, i * 350);
+}
+setInterval(createPetal, 1100);
+</script>
+
+</body>
+</html>
